@@ -1,10 +1,13 @@
 // load express
 const express = require('express')
+const path = require('path')
 
 // create our express app
 const app = express()
 
 // Config the app (app.set)
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
 
 // mount middleware (app.use)
 
@@ -16,7 +19,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/home', function (req, res) {
-    res.send('<h1>Home Page</h1>')
+    res.render('home')
 })
 
 app.listen(1212, function () {
